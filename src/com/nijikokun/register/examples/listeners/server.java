@@ -1,5 +1,8 @@
 package com.nijikokun.register.examples.listeners;
 
+// Example plugin
+import com.nijikokun.register.examples.MyPlugin;
+
 // Imports for Register
 import com.nijikokun.register.payment.Method;
 import com.nijikokun.register.payment.Methods;
@@ -10,11 +13,15 @@ import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.event.server.ServerListener;
 
 public class server extends ServerListener {
-    // Change "Object" to the name of your MAIN class file: IE in iConomy you would use iConomy.. and so forth.
-    private Object plugin;
+    // Change "MyPlugin" to the name of your MAIN class file.
+    // Let's say my plugins MAIN class is: Register.java
+    // I would change "MyPlugin" to "Register"
+    private MyPlugin plugin;
+
+    // We only need it here.
     private Methods Methods;
 
-    public server(Object plugin) {
+    public server(MyPlugin plugin) {
         this.plugin = plugin;
         this.Methods = new Methods();
     }
@@ -26,7 +33,7 @@ public class server extends ServerListener {
             Boolean check = this.Methods.checkDisabled(event.getPlugin());
 
             if(check) {
-                System.out.println("[Plugin] Payment method was disabled. No longer accepting payments.");
+                System.out.println("[" + plugin.info.getName() + "] Payment method was disabled. No longer accepting payments.");
             }
         }
     }
@@ -38,8 +45,8 @@ public class server extends ServerListener {
             if(this.Methods.setMethod(event.getPlugin())) {
                 // You might want to make this a public variable inside your MAIN class public Method Method = null;
                 // then reference it through this.plugin.Method so that way you can use it in the rest of your plugin ;)
-                Method method = this.Methods.getMethod();
-                System.out.println("[Plugin] Payment method found (" + method.getName() + " version: " + method.getVersion() + ")");
+                this.plugin.Method = this.Methods.getMethod();
+                System.out.println("[" + plugin.info.getName() + "] Payment method found (" + this.plugin.Method.getName() + " version: " + this.plugin.Method.getVersion() + ")");
             }
         }
     }
