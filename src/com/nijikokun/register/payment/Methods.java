@@ -26,7 +26,7 @@ public class Methods {
             } else if(name.equalsIgnoreCase("boseconomy")) {
                 Method = new MethodBOSEconomy((BOSEconomy)method);
             } else if(name.equalsIgnoreCase("essentials")) {
-                if(!((Essentials)method).isIConomyFallbackEnabled()) Method = new MethodEEco((Essentials)method);
+                Method = new MethodEEco((Essentials)method);
             }
         }
         
