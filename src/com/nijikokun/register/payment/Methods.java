@@ -41,7 +41,7 @@ public class Methods {
                 Method = new MethodBOSEconomy((BOSEconomy)method);
             } else if(loader.getPlugin("Essentials") != null) {
                 method = loader.getPlugin("Essentials");
-                if(!((Essentials)method).isIConomyFallbackEnabled()) Method = new MethodEEco((Essentials)method);
+                Method = new MethodEEco((Essentials)method);
             }
         }
         
