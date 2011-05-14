@@ -60,12 +60,12 @@ public class EE17 implements Method {
     {
         return plugin.getDescription().getName().equalsIgnoreCase("essentials")
             && plugin instanceof Economy;
-	}
+    }
 
-	public void setPlugin(Plugin plugin)
-	{
-		Essentials = (Essentials)plugin;
-	}
+    public void setPlugin(Plugin plugin)
+    {
+        Essentials = (Essentials)plugin;
+    }
 
     public class EEcoAccount implements MethodAccount {
         private String name;
