@@ -59,7 +59,7 @@ public class EE17 implements Method {
     public boolean isCompatible(Plugin plugin)
     {
         return plugin.getDescription().getName().equalsIgnoreCase("essentials")
-            && plugin instanceof Economy;
+            && plugin instanceof Essentials;
     }
 
     public void setPlugin(Plugin plugin)
