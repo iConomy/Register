@@ -1,13 +1,15 @@
 package com.nijikokun.register.payment.methods;
 
 import com.nijikokun.register.payment.Method;
+import com.nijikokun.register.payment.MethodFactory;
 import cosine.boseconomy.BOSEconomy;
+import org.bukkit.plugin.Plugin;
 
 public class BOSE implements Method {
     private BOSEconomy BOSEconomy;
 
-    public BOSE(BOSEconomy BOSEconomy) {
-        this.BOSEconomy = BOSEconomy;
+    static {
+        MethodFactory.addMethod(new BOSE());
     }
 
     public BOSEconomy getPlugin() {
@@ -51,6 +53,17 @@ public class BOSE implements Method {
 
     public MethodBankAccount getBankAccount(String bank, String name) {
         return new BOSEBankAccount(bank, name, BOSEconomy);
+    }
+
+    public boolean isCompatible(Plugin plugin)
+    {
+        return plugin.getDescription().getName().equalsIgnoreCase("boseconomy")
+            && plugin instanceof BOSEconomy;
+    }
+
+    public void setPlugin(Plugin plugin)
+    {
+        BOSEconomy = (BOSEconomy)plugin;
     }
 
     public class BOSEAccount implements MethodAccount {

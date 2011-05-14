@@ -6,12 +6,14 @@ import com.iConomy.system.BankAccount;
 import com.iConomy.system.Holdings;
 import com.iConomy.util.Constants;
 import com.nijikokun.register.payment.Method;
+import com.nijikokun.register.payment.MethodFactory;
+import org.bukkit.plugin.Plugin;
 
 public class iCo5 implements Method {
     private iConomy iConomy;
 
-    public iCo5(iConomy iConomy) {
-        this.iConomy = iConomy;
+    static {
+        MethodFactory.addMethod(new iCo5());
     }
 
     public iConomy getPlugin() {
@@ -52,6 +54,17 @@ public class iCo5 implements Method {
 
     public MethodBankAccount getBankAccount(String bank, String name) {
         return new iCoBankAccount(this.iConomy.getBank(bank).getAccount(name));
+    }
+	
+    public boolean isCompatible(Plugin plugin)
+    {
+        return plugin.getDescription().getName().equalsIgnoreCase("iconomy")
+            && plugin instanceof iConomy;
+    }
+
+    public void setPlugin(Plugin plugin)
+    {
+        iConomy = (iConomy)plugin;
     }
 
     public class iCoAccount implements MethodAccount {
