@@ -1,5 +1,9 @@
 package com.nijikokun.register.payment;
 
+import com.nijikokun.register.payment.methods.BOSE;
+import com.nijikokun.register.payment.methods.iCo4;
+import com.nijikokun.register.payment.methods.iCo5;
+import com.nijikokun.register.payment.methods.EE17;
 import com.iConomy.iConomy;
 import cosine.boseconomy.BOSEconomy;
 import com.earth2me.essentials.Essentials;
@@ -21,12 +25,12 @@ public class Methods {
 
             if(name.equalsIgnoreCase("iconomy")) {
                 if(method.getClass().getName().equals("com.iConomy.iConomy"))
-                    Method = new MethodiCo5((iConomy)method);
-                else { Method = new MethodiCo4((com.nijiko.coelho.iConomy.iConomy)method); }
+                    Method = new iCo5((iConomy)method);
+                else { Method = new iCo4((com.nijiko.coelho.iConomy.iConomy)method); }
             } else if(name.equalsIgnoreCase("boseconomy")) {
-                Method = new MethodBOSEconomy((BOSEconomy)method);
+                Method = new BOSE((BOSEconomy)method);
             } else if(name.equalsIgnoreCase("essentials")) {
-                Method = new MethodEEco((Essentials)method);
+                Method = new EE17((Essentials)method);
             }
         }
         
@@ -34,14 +38,14 @@ public class Methods {
             if(loader.getPlugin("iConomy") != null) {
                 method =  loader.getPlugin("iConomy");
                 if(method.getClass().getName().equals("com.iConomy.iConomy"))
-                    Method = new MethodiCo5((iConomy)method);
-                else { Method = new MethodiCo4((com.nijiko.coelho.iConomy.iConomy)method); }
+                    Method = new iCo5((iConomy)method);
+                else { Method = new iCo4((com.nijiko.coelho.iConomy.iConomy)method); }
             } else if(loader.getPlugin("BOSEconomy") != null) {
                 method = loader.getPlugin("BOSEconomy");
-                Method = new MethodBOSEconomy((BOSEconomy)method);
+                Method = new BOSE((BOSEconomy)method);
             } else if(loader.getPlugin("Essentials") != null) {
                 method = loader.getPlugin("Essentials");
-                Method = new MethodEEco((Essentials)method);
+                Method = new EE17((Essentials)method);
             }
         }
         
