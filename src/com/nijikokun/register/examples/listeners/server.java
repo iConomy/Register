@@ -30,6 +30,7 @@ public class server extends ServerListener {
             Boolean check = this.plugin.Methods.checkDisabled(event.getPlugin());
 
             if(check) {
+                this.plugin.Method = null;
                 System.out.println("[" + plugin.info.getName() + "] Payment method was disabled. No longer accepting payments.");
             }
         }
@@ -43,7 +44,6 @@ public class server extends ServerListener {
                 // You might want to make this a public variable inside your MAIN class public Method Method = null;
                 // then reference it through this.plugin.Method so that way you can use it in the rest of your plugin ;)
                 this.plugin.Method = this.plugin.Methods.getMethod();
-                System.out.println("[" + plugin.info.getName() + "] Payment method found (" + this.plugin.Method.getName() + " version: " + this.plugin.Method.getVersion() + ")");
             }
         }
     }

@@ -23,11 +23,16 @@ public class MyPlugin extends JavaPlugin {
     public void onEnable() {
         this.Methods = new Methods();
 
-        // Check before events, incase your plugin loads last.
-        this.Methods.checkDisabled(null);
-
         // Watch plugins enable / disable
         pluginManager.registerEvent(Event.Type.PLUGIN_ENABLE, new server(this), Priority.Monitor, this);
         pluginManager.registerEvent(Event.Type.PLUGIN_DISABLE, new server(this), Priority.Monitor, this);
+
+        // Check after events, incase your plugin loads last.
+        this.Methods.checkDisabled(null);
+
+        if(this.Method != null) {
+            this.Method = this.Methods.getMethod();
+            System.out.println("[" + info.getName() + "] Payment method found (" + this.Method.getName() + " version: " + this.Method.getVersion() + ")");
+        }
     }
 }
