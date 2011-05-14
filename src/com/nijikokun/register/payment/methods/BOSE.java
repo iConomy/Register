@@ -59,7 +59,7 @@ public class BOSE implements Method {
     {
         return plugin.getDescription().getName().equalsIgnoreCase("boseconomy")
             && plugin instanceof BOSEconomy;
-	}
+    }
 
     public void setPlugin(Plugin plugin)
     {
