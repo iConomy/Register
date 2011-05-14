@@ -5,12 +5,14 @@ import com.earth2me.essentials.api.Economy;
 import com.earth2me.essentials.api.NoLoanPermittedException;
 import com.earth2me.essentials.api.UserDoesNotExistException;
 import com.nijikokun.register.payment.Method;
+import com.nijikokun.register.payment.MethodFactory;
+import org.bukkit.plugin.Plugin;
 
 public class EE17 implements Method {
     private Essentials Essentials;
 
-    public EE17(Essentials Essentials) {
-        this.Essentials = Essentials;
+    static {
+        MethodFactory.addMethod(new EE17());
     }
 
     public Essentials getPlugin() {
@@ -52,6 +54,17 @@ public class EE17 implements Method {
 
     public MethodBankAccount getBankAccount(String bank, String name) {
         return null;
+    }
+	
+    public boolean isCompatible(Plugin plugin)
+    {
+        return plugin.getDescription().getName().equalsIgnoreCase("essentials")
+            && plugin instanceof Essentials;
+    }
+
+    public void setPlugin(Plugin plugin)
+    {
+        Essentials = (Essentials)plugin;
     }
 
     public class EEcoAccount implements MethodAccount {
