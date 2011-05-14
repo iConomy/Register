@@ -1,7 +1,6 @@
 package com.nijikokun.register.payment;
 
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
 
 public class Methods {
 
@@ -18,22 +17,7 @@ public class Methods {
 
     public boolean checkDisabled(Plugin method) {
         if(!hasMethod()) return true;
-
-        PluginDescriptionFile info = method.getDescription();
-        String name = info.getName(), current = Method.getName();
-
-        if (name.equalsIgnoreCase("iconomy") && current.equalsIgnoreCase("iconomy")) {
-            if (method.getClass().getName().equals("com.iConomy.iConomy") && Method.getVersion().equals("5")) {
-                Method = null;
-            } else {
-                Method = null;
-            }
-        } else if (name.equalsIgnoreCase("boseconomy") && current.equalsIgnoreCase("boseconomy")) {
-            Method = null;
-        } else if (name.equalsIgnoreCase("essentials") && current.equalsIgnoreCase("essentialseco")) {
-            Method = null;
-        }
-
+        if (Method.isCompatible(method)) Method = null;
         return (Method == null);
     }
 
