@@ -13,8 +13,8 @@ public class iCo5 implements Method {
     private iConomy iConomy;
 
     static {
-		MethodFactory.addMethod(new iCo5());
-	}
+        MethodFactory.addMethod(new iCo5());
+    }
 
     public iConomy getPlugin() {
         return this.iConomy;
@@ -56,16 +56,16 @@ public class iCo5 implements Method {
         return new iCoBankAccount(this.iConomy.getBank(bank).getAccount(name));
     }
 	
-	public boolean isCompatible(Plugin plugin)
-	{
-		return plugin.getDescription().getName().equalsIgnoreCase("iconomy")
-				&& plugin instanceof iConomy;
-	}
+    public boolean isCompatible(Plugin plugin)
+    {
+        return plugin.getDescription().getName().equalsIgnoreCase("iconomy")
+            && plugin instanceof iConomy;
+    }
 
-	public void setPlugin(Plugin plugin)
-	{
-		iConomy = (iConomy)plugin;
-	}
+    public void setPlugin(Plugin plugin)
+    {
+        iConomy = (iConomy)plugin;
+    }
 
     public class iCoAccount implements MethodAccount {
         private Account account;

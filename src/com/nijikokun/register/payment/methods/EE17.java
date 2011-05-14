@@ -12,8 +12,8 @@ public class EE17 implements Method {
     private Essentials Essentials;
 
     static {
-		MethodFactory.addMethod(new EE17());
-	}
+        MethodFactory.addMethod(new EE17());
+    }
 
     public Essentials getPlugin() {
         return this.Essentials;
@@ -56,10 +56,10 @@ public class EE17 implements Method {
         return null;
     }
 	
-	public boolean isCompatible(Plugin plugin)
-	{
-		return plugin.getDescription().getName().equalsIgnoreCase("essentials")
-				&& plugin instanceof Economy;
+    public boolean isCompatible(Plugin plugin)
+    {
+        return plugin.getDescription().getName().equalsIgnoreCase("essentials")
+            && plugin instanceof Economy;
 	}
 
 	public void setPlugin(Plugin plugin)

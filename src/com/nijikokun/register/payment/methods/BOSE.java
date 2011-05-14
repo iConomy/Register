@@ -8,11 +8,8 @@ import org.bukkit.plugin.Plugin;
 public class BOSE implements Method {
     private BOSEconomy BOSEconomy;
 
-	static {
-		MethodFactory.addMethod(new BOSE());
-	}
-	
-    private BOSE() {
+    static {
+        MethodFactory.addMethod(new BOSE());
     }
 
     public BOSEconomy getPlugin() {
@@ -58,16 +55,16 @@ public class BOSE implements Method {
         return new BOSEBankAccount(bank, name, BOSEconomy);
     }
 
-	public boolean isCompatible(Plugin plugin)
-	{
-		return plugin.getDescription().getName().equalsIgnoreCase("boseconomy")
-				&& plugin instanceof BOSEconomy;
+    public boolean isCompatible(Plugin plugin)
+    {
+        return plugin.getDescription().getName().equalsIgnoreCase("boseconomy")
+            && plugin instanceof BOSEconomy;
 	}
 
-	public void setPlugin(Plugin plugin)
-	{
-		BOSEconomy = (BOSEconomy)plugin;
-	}
+    public void setPlugin(Plugin plugin)
+    {
+        BOSEconomy = (BOSEconomy)plugin;
+    }
 
     public class BOSEAccount implements MethodAccount {
         private String name;

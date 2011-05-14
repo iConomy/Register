@@ -6,19 +6,15 @@ import org.bukkit.plugin.PluginDescriptionFile;
 
 public class Methods {
     private Method Method = null;
-    //public Plugin method = null;
     
     public boolean setMethod(Plugin method) {
         //PluginManager loader = method.getServer().getPluginManager();
 
         if(method.isEnabled()) {
-            PluginDescriptionFile info = method.getDescription();
-            String name = info.getName();
-
-			Method pluginMethod = MethodFactory.createMethod(method);
-			if (pluginMethod != null) {
-				Method = pluginMethod;
-			}
+            Method pluginMethod = MethodFactory.createMethod(method);
+            if (pluginMethod != null) {
+                Method = pluginMethod;
+            }
         }
         
         /*if(!hasMethod()) {
