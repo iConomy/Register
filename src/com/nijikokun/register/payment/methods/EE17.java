@@ -12,7 +12,7 @@ public class EE17 implements Method {
     private Essentials Essentials;
 
     static {
-        MethodFactory.addMethod(new EE17());
+        MethodFactory.addMethod("Essentials", new EE17());
     }
 
     public Essentials getPlugin() {
