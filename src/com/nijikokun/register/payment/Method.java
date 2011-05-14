@@ -13,8 +13,8 @@ public interface Method {
     public boolean hasBankAccount(String bank, String name);
     public MethodAccount getAccount(String name);
     public MethodBankAccount getBankAccount(String bank, String name);
-	public boolean isCompatible(Plugin plugin);
-	public void setPlugin(Plugin plugin);
+    public boolean isCompatible(Plugin plugin);
+    public void setPlugin(Plugin plugin);
 
     public interface MethodAccount {
         public double balance();
