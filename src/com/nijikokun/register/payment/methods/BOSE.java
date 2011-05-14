@@ -76,6 +76,11 @@ public class BOSE implements Method {
             return Double.valueOf(this.BOSEconomy.getPlayerMoney(this.name));
         }
 
+        public boolean set(double amount) {
+            int IntAmount = (int)Math.ceil(amount);
+            return this.BOSEconomy.setPlayerMoney(this.name, IntAmount, false);
+        }
+
         public boolean add(double amount) {
             int IntAmount = (int)Math.ceil(amount);
             int balance = (int)this.balance();
@@ -142,6 +147,11 @@ public class BOSE implements Method {
 
         public double balance() {
             return Double.valueOf(this.BOSEconomy.getBankMoney(name));
+        }
+
+        public boolean set(double amount) {
+            int IntAmount = (int)Math.ceil(amount);
+            return this.BOSEconomy.setBankMoney(name, IntAmount, true);
         }
 
         public boolean add(double amount) {

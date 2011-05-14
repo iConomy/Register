@@ -81,6 +81,12 @@ public class iCo5 implements Method {
             return this.holdings.balance();
         }
 
+        public boolean set(double amount) {
+            if(this.holdings == null) return false;
+            this.holdings.set(amount);
+            return true;
+        }
+
         public boolean add(double amount) {
             if(this.holdings == null) return false;
             this.holdings.add(amount);
@@ -151,6 +157,12 @@ public class iCo5 implements Method {
 
         public double balance() {
             return this.holdings.balance();
+        }
+
+        public boolean set(double amount) {
+            if(this.holdings == null) return false;
+            this.holdings.set(amount);
+            return true;
         }
 
         public boolean add(double amount) {

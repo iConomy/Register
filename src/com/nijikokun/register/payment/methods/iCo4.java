@@ -76,6 +76,12 @@ public class iCo4 implements Method {
             return this.account.getBalance();
         }
 
+        public boolean set(double amount) {
+            if(this.account == null) return false;
+            this.account.setBalance(amount);
+            return true;
+        }
+
         public boolean add(double amount) {
             if(this.account == null) return false;
             this.account.add(amount);

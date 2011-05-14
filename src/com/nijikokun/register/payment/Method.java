@@ -18,6 +18,7 @@ public interface Method {
 
     public interface MethodAccount {
         public double balance();
+        public boolean set(double amount);
         public boolean add(double amount);
         public boolean subtract(double amount);
         public boolean multiply(double amount);
@@ -36,6 +37,7 @@ public interface Method {
         public double balance();
         public String getBankName();
         public int getBankId();
+        public boolean set(double amount);
         public boolean add(double amount);
         public boolean subtract(double amount);
         public boolean multiply(double amount);
