@@ -83,13 +83,29 @@ public class EE17 implements Method {
             return balance;
         }
 
+        public boolean set(double amount) {
+            try {
+                Economy.setMoney(name, amount);
+            } catch (UserDoesNotExistException ex) {
+                System.out.println("[REGISTER] User does not exist in Essentials Economy: " + ex.getMessage());
+                return false;
+            } catch (NoLoanPermittedException ex) {
+                System.out.println("[REGISTER] No loan permitted in Essentials Economy: " + ex.getMessage());
+                return false;
+            }
+
+            return true;
+        }
+
         public boolean add(double amount) {
             try {
                 Economy.add(name, amount);
             } catch (UserDoesNotExistException ex) {
                 System.out.println("[REGISTER] User does not exist in Essentials Economy: " + ex.getMessage());
+                return false;
             } catch (NoLoanPermittedException ex) {
                 System.out.println("[REGISTER] No loan permitted in Essentials Economy: " + ex.getMessage());
+                return false;
             }
 
             return true;
@@ -100,8 +116,10 @@ public class EE17 implements Method {
                 Economy.subtract(name, amount);
             } catch (UserDoesNotExistException ex) {
                 System.out.println("[REGISTER] User does not exist in Essentials Economy: " + ex.getMessage());
+                return false;
             } catch (NoLoanPermittedException ex) {
                 System.out.println("[REGISTER] No loan permitted in Essentials Economy: " + ex.getMessage());
+                return false;
             }
 
             return true;
@@ -112,8 +130,10 @@ public class EE17 implements Method {
                 Economy.multiply(name, amount);
             } catch (UserDoesNotExistException ex) {
                 System.out.println("[REGISTER] User does not exist in Essentials Economy: " + ex.getMessage());
+                return false;
             } catch (NoLoanPermittedException ex) {
                 System.out.println("[REGISTER] No loan permitted in Essentials Economy: " + ex.getMessage());
+                return false;
             }
 
             return true;
@@ -124,8 +144,10 @@ public class EE17 implements Method {
                 Economy.divide(name, amount);
             } catch (UserDoesNotExistException ex) {
                 System.out.println("[REGISTER] User does not exist in Essentials Economy: " + ex.getMessage());
+                return false;
             } catch (NoLoanPermittedException ex) {
                 System.out.println("[REGISTER] No loan permitted in Essentials Economy: " + ex.getMessage());
+                return false;
             }
 
             return true;
