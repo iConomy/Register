@@ -55,14 +55,11 @@ public class BOSE implements Method {
         return new BOSEBankAccount(bank, name, BOSEconomy);
     }
 
-    public boolean isCompatible(Plugin plugin)
-    {
-        return plugin.getDescription().getName().equalsIgnoreCase("boseconomy")
-            && plugin instanceof BOSEconomy;
+    public boolean isCompatible(Plugin plugin) {
+        return plugin.getDescription().getName().equalsIgnoreCase("boseconomy") && plugin instanceof BOSEconomy;
     }
 
-    public void setPlugin(Plugin plugin)
-    {
+    public void setPlugin(Plugin plugin) {
         BOSEconomy = (BOSEconomy)plugin;
     }
 

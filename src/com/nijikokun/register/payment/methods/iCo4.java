@@ -53,14 +53,11 @@ public class iCo4 implements Method {
         return null;
     }
 	
-    public boolean isCompatible(Plugin plugin)
-    {
-        return plugin.getDescription().getName().equalsIgnoreCase("iconomy")
-            && plugin instanceof iConomy;
+    public boolean isCompatible(Plugin plugin) {
+        return plugin.getDescription().getName().equalsIgnoreCase("iconomy") && plugin instanceof iConomy;
     }
 
-    public void setPlugin(Plugin plugin)
-    {
+    public void setPlugin(Plugin plugin) {
         iConomy = (iConomy)plugin;
     }
 	

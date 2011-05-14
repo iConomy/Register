@@ -56,14 +56,11 @@ public class EE17 implements Method {
         return null;
     }
 	
-    public boolean isCompatible(Plugin plugin)
-    {
-        return plugin.getDescription().getName().equalsIgnoreCase("essentials")
-            && plugin instanceof Essentials;
+    public boolean isCompatible(Plugin plugin) {
+        return plugin.getDescription().getName().equalsIgnoreCase("essentials") && plugin instanceof Essentials;
     }
 
-    public void setPlugin(Plugin plugin)
-    {
+    public void setPlugin(Plugin plugin) {
         Essentials = (Essentials)plugin;
     }
 
