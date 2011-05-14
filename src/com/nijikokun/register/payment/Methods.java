@@ -18,6 +18,7 @@ public class Methods {
                 if(hasMethod()) break;
 
                 method = manager.getPlugin(name);
+                if(method == null) continue;
                 if(!method.isEnabled()) manager.enablePlugin(method);
                 if(!method.isEnabled()) continue;
 
