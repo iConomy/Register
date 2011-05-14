@@ -1,5 +1,7 @@
 package com.nijikokun.register.payment;
 
+import org.bukkit.plugin.Plugin;
+
 public interface Method {
     public Object getPlugin();
     public String getName();
@@ -11,6 +13,8 @@ public interface Method {
     public boolean hasBankAccount(String bank, String name);
     public MethodAccount getAccount(String name);
     public MethodBankAccount getBankAccount(String bank, String name);
+	public boolean isCompatible(Plugin plugin);
+	public void setPlugin(Plugin plugin);
 
     public interface MethodAccount {
         public double balance();

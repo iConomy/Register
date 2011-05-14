@@ -3,13 +3,15 @@ package com.nijikokun.register.payment.methods;
 import com.nijiko.coelho.iConomy.iConomy;
 import com.nijiko.coelho.iConomy.system.Account;
 import com.nijikokun.register.payment.Method;
+import com.nijikokun.register.payment.MethodFactory;
+import org.bukkit.plugin.Plugin;
 
 public class iCo4 implements Method {
     private iConomy iConomy;
 
-    public iCo4(iConomy iConomy) {
-        this.iConomy = iConomy;
-    }
+	static {
+		MethodFactory.addMethod(new iCo4());
+	}
 
     public iConomy getPlugin() {
         return this.iConomy;
@@ -50,7 +52,18 @@ public class iCo4 implements Method {
     public MethodBankAccount getBankAccount(String bank, String name) {
         return null;
     }
+	
+	public boolean isCompatible(Plugin plugin)
+	{
+		return plugin.getDescription().getName().equalsIgnoreCase("iconomy")
+				&& plugin instanceof iConomy;
+	}
 
+	public void setPlugin(Plugin plugin)
+	{
+		iConomy = (iConomy)plugin;
+	}
+	
     public class iCoAccount implements MethodAccount {
         private Account account;
 
