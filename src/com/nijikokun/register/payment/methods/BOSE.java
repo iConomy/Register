@@ -1,17 +1,11 @@
 package com.nijikokun.register.payment.methods;
 
 import com.nijikokun.register.payment.Method;
-import com.nijikokun.register.payment.MethodFactory;
 import cosine.boseconomy.BOSEconomy;
 import org.bukkit.plugin.Plugin;
 
 public class BOSE implements Method {
     private BOSEconomy BOSEconomy;
-
-    static {
-        MethodFactory.addMethod("BOSEconomy", new BOSE());
-
-    }
 
     public BOSEconomy getPlugin() {
         return this.BOSEconomy;
