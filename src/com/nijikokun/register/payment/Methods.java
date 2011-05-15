@@ -7,6 +7,13 @@ public class Methods {
 
     private Method Method = null;
 
+    public Methods() {
+        MethodFactory.addMethod("iConomy", new com.nijikokun.register.payment.methods.iCo4());
+        MethodFactory.addMethod("iConomy", new com.nijikokun.register.payment.methods.iCo5());
+        MethodFactory.addMethod("BOSEconomy", new com.nijikokun.register.payment.methods.BOSE());
+        MethodFactory.addMethod("Essentials", new com.nijikokun.register.payment.methods.EE17());
+    }
+
     public boolean setMethod(Plugin method) {
         PluginManager manager = method.getServer().getPluginManager();
 
