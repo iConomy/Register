@@ -54,6 +54,9 @@ public class EE17 implements Method {
     }
 	
     public boolean isCompatible(Plugin plugin) {
+        try { Class.forName("com.earth2me.essentials.api.Economy"); }
+        catch(Exception e) { return false; }
+
         return plugin.getDescription().getName().equalsIgnoreCase("essentials") && plugin instanceof Essentials;
     }
 
