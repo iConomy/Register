@@ -17,7 +17,7 @@ public class EE17 implements Method {
     }
 
     public String getName() {
-        return "EssentialsEco";
+        return "Essentials";
     }
 
     public String getVersion() {
