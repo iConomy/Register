@@ -35,7 +35,6 @@ public class Methods {
         this._init();
 
         if(this.Dependencies.contains(preferred)) {
-            System.out.println("Obtained a preference");
             this.preferred = preferred;
         }
     }
@@ -98,7 +97,6 @@ public class Methods {
             if(this.preferred.isEmpty())
                 this.Method = current;
             else {
-                System.out.println("Attached to: " + current.getName());
                 this.Attachables.add(current);
             }
         }
