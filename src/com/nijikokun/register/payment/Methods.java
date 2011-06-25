@@ -84,13 +84,6 @@ public class Methods {
             if(method.getDescription().getName().equals(name)) plugin = method; else  plugin = manager.getPlugin(name);
             if(plugin == null) continue;
 
-            if(!plugin.isEnabled()) {
-                this.self = true;
-                manager.enablePlugin(plugin);
-            }
-
-            if(plugin == null) continue;
-
             Method current = this.createMethod(plugin);
             if(current == null) continue;
 
