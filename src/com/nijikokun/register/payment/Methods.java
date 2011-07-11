@@ -1,5 +1,6 @@
 package com.nijikokun.register.payment;
 
+<<<<<<< HEAD
 import com.nijikokun.register.payment.methods.BOSE6;
 import com.nijikokun.register.payment.methods.BOSE7;
 import org.bukkit.plugin.Plugin;
@@ -8,6 +9,14 @@ import org.bukkit.plugin.PluginManager;
 import java.util.HashSet;
 import java.util.Set;
 
+=======
+import java.util.HashSet;
+import java.util.Set;
+
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
+
+>>>>>>> Register/master
 /**
  * Methods.java
  * Controls the getting / setting of methods & the method of payment used.
@@ -31,7 +40,11 @@ public class Methods {
     /**
      * Allows you to set which economy plugin is most preferred.
      * 
+<<<<<<< HEAD
      * @param preferred - preferred economy plugin
+=======
+     * @param preferred
+>>>>>>> Register/master
      */
     public Methods(String preferred) {
         this._init();
@@ -44,8 +57,12 @@ public class Methods {
     private void _init() {
         this.addMethod("iConomy", new com.nijikokun.register.payment.methods.iCo4());
         this.addMethod("iConomy", new com.nijikokun.register.payment.methods.iCo5());
+<<<<<<< HEAD
         this.addMethod("BOSEconomy", new BOSE6());
         this.addMethod("BOSEconomy", new BOSE7());
+=======
+        this.addMethod("BOSEconomy", new com.nijikokun.register.payment.methods.BOSE());
+>>>>>>> Register/master
         this.addMethod("Essentials", new com.nijikokun.register.payment.methods.EE17());
     }
 
@@ -79,7 +96,11 @@ public class Methods {
 
         int count = 0;
         boolean match = false;
+<<<<<<< HEAD
         Plugin plugin;
+=======
+        Plugin plugin = null;
+>>>>>>> Register/master
         PluginManager manager = method.getServer().getPluginManager();
 
         for(String name: this.getDependencies()) {
