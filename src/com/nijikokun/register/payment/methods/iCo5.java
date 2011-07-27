@@ -52,7 +52,7 @@ public class iCo5 implements Method {
     public MethodBankAccount getBankAccount(String bank, String name) {
         return new iCoBankAccount(this.iConomy.getBank(bank).getAccount(name));
     }
-	
+
     public boolean isCompatible(Plugin plugin) {
         return plugin.getDescription().getName().equalsIgnoreCase("iconomy") && plugin.getClass().getName().equals("com.iConomy.iConomy") && plugin instanceof iConomy;
     }
