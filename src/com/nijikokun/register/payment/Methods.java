@@ -2,6 +2,7 @@ package com.nijikokun.register.payment;
 
 import com.nijikokun.register.payment.methods.BOSE6;
 import com.nijikokun.register.payment.methods.BOSE7;
+import com.nijikokun.register.payment.methods.MCurrency;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
@@ -47,6 +48,7 @@ public class Methods {
         this.addMethod("BOSEconomy", new BOSE6());
         this.addMethod("BOSEconomy", new BOSE7());
         this.addMethod("Essentials", new com.nijikokun.register.payment.methods.EE17());
+        this.addMethod("Currency", new MCurrency());
     }
 
     public Set<String> getDependencies() {
@@ -113,8 +115,7 @@ public class Methods {
                         if(this.preferred.isEmpty()) this.Method = attached;
 
                         if(count == 0) {
-                            if(this.preferred.equalsIgnoreCase(attached.getName()))
-                                this.Method = attached;
+                            if(this.preferred.equalsIgnoreCase(attached.getName())) this.Method = attached;
                         } else {
                             this.Method = attached;
                         }
