@@ -1,10 +1,7 @@
-package com.nijikokun.register.examples.listeners;
+package com.nijikokun.register.example.listeners;
 
-// Example plugin
-import com.nijikokun.register.examples.MyPlugin;
-
-// Imports for Register
-import com.nijikokun.register.payment.Method;
+// Imports for MyPlugin
+import com.nijikokun.register.example.MyPlugin;
 import com.nijikokun.register.payment.Methods;
 
 // Bukkit Imports
@@ -14,8 +11,8 @@ import org.bukkit.event.server.ServerListener;
 
 public class server extends ServerListener {
     // Change "MyPlugin" to the name of your MAIN class file.
-    // Let's say my plugins MAIN class is: Register.java
-    // I would change "MyPlugin" to "Register"
+    // Let's say my plugins MAIN class is: MyPlugin.java
+    // I would change "MyPlugin" to "MyPlugin"
     private MyPlugin plugin;
     private Methods Methods = null;
 

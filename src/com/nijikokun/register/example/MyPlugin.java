@@ -1,6 +1,6 @@
-package com.nijikokun.register.examples;
+package com.nijikokun.register.example;
 
-import com.nijikokun.register.examples.listeners.server;
+import com.nijikokun.register.example.listeners.server;
 import com.nijikokun.register.payment.Method;
 
 import org.bukkit.event.Event;
