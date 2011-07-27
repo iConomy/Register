@@ -1,13 +1,10 @@
 package com.nijikokun.register.payment;
 
-import com.nijikokun.register.payment.methods.BOSE6;
-import com.nijikokun.register.payment.methods.BOSE7;
-import com.nijikokun.register.payment.methods.MCurrency;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginManager;
-
 import java.util.HashSet;
 import java.util.Set;
+
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 
 /**
  * Methods.java
@@ -32,7 +29,7 @@ public class Methods {
     /**
      * Allows you to set which economy plugin is most preferred.
      * 
-     * @param preferred - preferred economy plugin
+     * @param preferred
      */
     public Methods(String preferred) {
         this._init();
@@ -43,12 +40,13 @@ public class Methods {
     }
 
     private void _init() {
-        this.addMethod("iConomy", new com.nijikokun.register.payment.methods.iCo4());
+        this.addMethod("iConomy", new com.nijikokun.register.payment.methods.iCo6());
         this.addMethod("iConomy", new com.nijikokun.register.payment.methods.iCo5());
-        this.addMethod("BOSEconomy", new BOSE6());
-        this.addMethod("BOSEconomy", new BOSE7());
+        this.addMethod("iConomy", new com.nijikokun.register.payment.methods.iCo4());
+        this.addMethod("BOSEconomy", new com.nijikokun.register.payment.methods.BOSE6());
+        this.addMethod("BOSEconomy", new com.nijikokun.register.payment.methods.BOSE7());
         this.addMethod("Essentials", new com.nijikokun.register.payment.methods.EE17());
-        this.addMethod("Currency", new MCurrency());
+        this.addMethod("MultiCurrency", new com.nijikokun.register.payment.methods.MCUR());
     }
 
     public Set<String> getDependencies() {
@@ -81,7 +79,7 @@ public class Methods {
 
         int count = 0;
         boolean match = false;
-        Plugin plugin;
+        Plugin plugin = null;
         PluginManager manager = method.getServer().getPluginManager();
 
         for(String name: this.getDependencies()) {
@@ -115,7 +113,8 @@ public class Methods {
                         if(this.preferred.isEmpty()) this.Method = attached;
 
                         if(count == 0) {
-                            if(this.preferred.equalsIgnoreCase(attached.getName())) this.Method = attached;
+                            if(this.preferred.equalsIgnoreCase(attached.getName()))
+                                this.Method = attached;
                         } else {
                             this.Method = attached;
                         }
