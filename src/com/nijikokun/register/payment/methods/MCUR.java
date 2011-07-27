@@ -1,14 +1,16 @@
 package com.nijikokun.register.payment.methods;
 
 import com.nijikokun.register.payment.Method;
+
 import me.ashtheking.currency.Currency;
 import me.ashtheking.currency.CurrencyList;
+
 import org.bukkit.plugin.Plugin;
 
 /**
  * @author Acrobot
  */
-public class MCurrency implements Method {
+public class MCUR implements Method {
     private Currency currencyList;
 
     public Object getPlugin() {
@@ -16,7 +18,7 @@ public class MCurrency implements Method {
     }
 
     public String getName() {
-        return "Currency";
+        return "MultiCurrency";
     }
 
     public String getVersion() {
