@@ -8,7 +8,11 @@ import me.ashtheking.currency.CurrencyList;
 import org.bukkit.plugin.Plugin;
 
 /**
+ * MultiCurrency Method implementation.
+ *
  * @author Acrobot
+ * @copyright (c) 2011
+ * @license AOL license <http://aol.nexua.org>
  */
 public class MCUR implements Method {
     private Currency currencyList;

@@ -11,6 +11,13 @@ import org.bukkit.plugin.PluginManager;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+/**
+ * Example plugin that utilizes register.
+ *
+ * @author Nijikokun <nijikokun@shortmail.com> (@nijikokun)
+ * @copyright (c) 2011
+ * @license AOL license <http://aol.nexua.org>
+ */
 public class MyPlugin extends JavaPlugin {
     public PluginDescriptionFile info = null;
     public PluginManager pluginManager = null;

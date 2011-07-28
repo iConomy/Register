@@ -9,6 +9,13 @@ import com.nijikokun.register.payment.Method;
 
 import org.bukkit.plugin.Plugin;
 
+/**
+ * iConomy 6 Implementation of Method
+ *
+ * @author Nijikokun <nijikokun@shortmail.com> (@nijikokun)
+ * @copyright (c) 2011
+ * @license AOL license <http://aol.nexua.org>
+ */
 public class iCo6 implements Method {
     private iConomy iConomy;
 
@@ -51,12 +58,12 @@ public class iCo6 implements Method {
     public MethodBankAccount getBankAccount(String bank, String name) {
         return null;
     }
-	
+
     public boolean isCompatible(Plugin plugin) {
-        try { Class.forName("com.iConomy.IO"); }
+        try { Class.forName("com.iCo6.IO"); }
         catch(Exception e) { return false; }
 
-        return plugin.getDescription().getName().equalsIgnoreCase("iconomy") && plugin.getClass().getName().equals("com.iConomy.iConomy") && plugin instanceof iConomy;
+        return plugin.getDescription().getName().equalsIgnoreCase("iconomy") && plugin.getClass().getName().equals("com.iCo6.iConomy") && plugin instanceof iConomy;
     }
 
     public void setPlugin(Plugin plugin) {

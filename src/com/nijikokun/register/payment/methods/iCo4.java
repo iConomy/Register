@@ -7,6 +7,13 @@ import com.nijikokun.register.payment.Method;
 
 import org.bukkit.plugin.Plugin;
 
+/**
+ * iConomy 4 Implementation of Method
+ *
+ * @author Nijikokun <nijikokun@shortmail.com> (@nijikokun)
+ * @copyright (c) 2011
+ * @license AOL license <http://aol.nexua.org>
+ */
 public class iCo4 implements Method {
     private iConomy iConomy;
 

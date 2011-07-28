@@ -4,6 +4,13 @@ import com.nijikokun.register.payment.Method;
 import cosine.boseconomy.BOSEconomy;
 import org.bukkit.plugin.Plugin;
 
+/**
+ * BOSEconomy 6 Implementation of Method
+ *
+ * @author Nijikokun <nijikokun@shortmail.com> (@nijikokun)
+ * @copyright (c) 2011
+ * @license AOL license <http://aol.nexua.org>
+ */
 public class BOSE6 implements Method {
     private BOSEconomy BOSEconomy;
 
