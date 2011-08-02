@@ -6,6 +6,7 @@
 
   <groupId>com.nijikokun</groupId>
   <artifactId>register</artifactId>
+  <name>Register</name>
   <version>1.0</version>
 
   <scm>
