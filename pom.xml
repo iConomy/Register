@@ -8,6 +8,11 @@
   <artifactId>register</artifactId>
   <version>1.0</version>
 
+  <scm>
+    <connection>scm:git:git://github.com/hohl/myresidence.git</connection>
+    <url>https://github.com/hohl/myresidence</url>
+  </scm>
+
   <repositories>
     <repository>
       <id>bukkit-repo</id>
