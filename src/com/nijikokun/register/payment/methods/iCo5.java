@@ -17,6 +17,7 @@ import org.bukkit.plugin.Plugin;
  * @copyright (c) 2011
  * @license AOL license <http://aol.nexua.org>
  */
+@SuppressWarnings("static-access")
 public class iCo5 implements Method {
     private iConomy iConomy;
 
@@ -32,7 +33,7 @@ public class iCo5 implements Method {
         return "5";
     }
 
-    public String format(double amount) {
+	public String format(double amount) {
         return this.iConomy.format(amount);
     }
 

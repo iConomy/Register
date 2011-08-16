@@ -14,6 +14,7 @@ import org.bukkit.plugin.Plugin;
  * @copyright (c) 2011
  * @license AOL license <http://aol.nexua.org>
  */
+@SuppressWarnings("static-access")
 public class iCo4 implements Method {
     private iConomy iConomy;
 
@@ -29,7 +30,7 @@ public class iCo4 implements Method {
         return "4";
     }
 
-    public String format(double amount) {
+	public String format(double amount) {
         return this.iConomy.getBank().format(amount);
     }
 
