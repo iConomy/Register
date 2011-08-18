@@ -12,15 +12,12 @@ import org.bukkit.plugin.PluginManager;
  *
  * Allowing you to check whether a payment method exists or not.
  *
- * <blockquote><pre>
- *  Methods methods = new Methods();
- * </pre></blockquote>
- *
  * Methods also allows you to set a preferred method of payment before it captures
  * payment plugins in the initialization process.
  *
+ * in server.properties:
  * <blockquote><pre>
- *  Methods methods = new Methods("iConomy");
+ *  economy=iConomy
  * </pre></blockquote>
  *
  * @author: Nijikokun <nijikokun@shortmail.com> (@nijikokun)
@@ -28,6 +25,7 @@ import org.bukkit.plugin.PluginManager;
  * @license: AOL license <http://aol.nexua.org>
  */
 public class Methods {
+	private static String version = null;
 	private static boolean self = false;
 	private static Method Method = null;
 	private static String preferred = "";
@@ -47,19 +45,41 @@ public class Methods {
 		addMethod("BOSEconomy", new com.nijikokun.register.payment.methods.BOSE6());
 		addMethod("BOSEconomy", new com.nijikokun.register.payment.methods.BOSE7());
 		addMethod("Essentials", new com.nijikokun.register.payment.methods.EE17());
-		addMethod("MultiCurrency", new com.nijikokun.register.payment.methods.MCUR());
+		addMethod("Currency", new com.nijikokun.register.payment.methods.MCUR());
+	}
+	
+	/**
+	 * Used by the plugin to setup version and prefered strings
+	 * 
+	 * @param v
+	 * @param p
+	 */
+	public static void setup(String v, String p) {
+		if (version == null) {
+			version = v;
+			preferred = p;
+		}
 	}
 	
 	/**
 	 * Use to reset methods during disable
 	 */
 	public static void reset() {
+		version = null;
 		self = false;
 		Method = null;
 		preferred = "";
 		Attachables.clear();
 	}
 	
+	/**
+	 * Use to get version of Register plugin
+	 * @return version
+	 */
+	public static String getVersion() {
+		return version;
+	}
+
 	/**
 	 * Returns an array of payment method names that have been loaded
 	 * through the <code>_init</code> method.
@@ -109,21 +129,20 @@ public class Methods {
 	 * Checks Plugin Class against a multitude of checks to verify it's usability
 	 * as a payment method.
 	 *
-	 * @param method Plugin data from bukkit, Internal Class file.
+	 * @param <code>PluginManager</code> the plugin manager for the server
 	 * @return <code>boolean</code> True on success, False on failure.
 	 */
-	public static boolean setMethod(Plugin method) {
+	public static boolean setMethod(PluginManager manager) {
 		if(hasMethod()) return true;
 		if(self) { self = false; return false; }
 		
 		int count = 0;
 		boolean match = false;
 		Plugin plugin = null;
-		PluginManager manager = method.getServer().getPluginManager();
 		
 		for(String name: getDependencies()) {
 			if(hasMethod()) break;
-			if(method.getDescription().getName().equals(name)) plugin = method; else  plugin = manager.getPlugin(name);
+			plugin = manager.getPlugin(name);
 			if(plugin == null) continue;
 			
 			Method current = createMethod(plugin);
