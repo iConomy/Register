@@ -22,11 +22,15 @@ public class MCUR implements Method {
     }
 
     public String getName() {
-        return "MultiCurrency";
+        return "Currency";
     }
 
     public String getVersion() {
         return "0.09";
+    }
+    
+    public int fractionalDigits() {
+    	return -1;
     }
 
     public String format(double amount) {

@@ -33,6 +33,10 @@ public class EE17 implements Method {
     public String getVersion() {
         return "2.2";
     }
+    
+    public int fractionalDigits() {
+    	return -1;
+    }
 
     public String format(double amount) {
         return Economy.format(amount);

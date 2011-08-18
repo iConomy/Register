@@ -31,6 +31,10 @@ public class iCo6 implements Method {
     public String getVersion() {
         return "6";
     }
+    
+    public int fractionalDigits() {
+    	return 2;
+    }
 
 	public String format(double amount) {
         return this.iConomy.format(amount);

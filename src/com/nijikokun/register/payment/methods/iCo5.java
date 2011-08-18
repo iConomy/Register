@@ -32,6 +32,10 @@ public class iCo5 implements Method {
     public String getVersion() {
         return "5";
     }
+    
+    public int fractionalDigits() {
+    	return 2;
+    }
 
 	public String format(double amount) {
         return this.iConomy.format(amount);

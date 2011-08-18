@@ -26,6 +26,10 @@ public class BOSE7 implements Method {
     public String getVersion() {
         return "0.7.0";
     }
+    
+    public int fractionalDigits() {
+    	return this.BOSEconomy.getFractionalDigits();
+    }
 
     public String format(double amount) {
         String currency = this.BOSEconomy.getMoneyNamePlural();
