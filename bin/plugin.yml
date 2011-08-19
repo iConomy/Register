@@ -1,7 +1,9 @@
 name: Register
 version: 0.1
 main: com.nijikokun.register.Register
-description: This is an implementation of Nijikokun's Register designed for easy implementation by LRFLEW
+description: >
+             This is an implementation of Nijikokun's Register
+             designed for easy implementation by LRFLEW
 author: Nijikokun
 website: http://forums.bukkit.org/threads/16849/
 softdepend: [iConomy, BOSEconomy, Currency]
