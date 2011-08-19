@@ -1,7 +1,5 @@
 package com.nijikokun.register;
 
-import java.io.FileInputStream;
-import java.util.Properties;
 import java.util.logging.Level;
 
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -21,18 +19,7 @@ public class Register extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		String prefered = "";
-		try {
-			FileInputStream in = new FileInputStream("server.properties");
-			Properties p = new Properties();
-			p.load(in);
-			prefered = p.getProperty("economy");
-			if (prefered == null) prefered = "";
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		String version = this.getDescription().getVersion();
-		Methods.setup(version, prefered);
+		Methods.setVersion(this.getDescription().getVersion());
 		
 		Methods.setMethod(this.getServer().getPluginManager());
 		

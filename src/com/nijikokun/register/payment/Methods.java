@@ -49,16 +49,12 @@ public class Methods {
 	}
 	
 	/**
-	 * Used by the plugin to setup version and prefered strings
+	 * Used by the plugin to setup version
 	 * 
-	 * @param v
-	 * @param p
+	 * @param v version
 	 */
-	public static void setup(String v, String p) {
-		if (version == null) {
-			version = v;
-			preferred = p;
-		}
+	public static void setVersion(String v) {
+		version = v;
 	}
 	
 	/**
