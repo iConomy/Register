@@ -6,4 +6,4 @@ description: >
              designed for easy implementation by LRFLEW
 author: Nijikokun
 website: http://forums.bukkit.org/threads/16849/
-softdepend: [iConomy, BOSEconomy, Currency]
+softdepend: [iConomy, BOSEconomy, Currency, MultiCurrency]
