@@ -14,7 +14,6 @@ import org.bukkit.plugin.Plugin;
  * @copyright (c) 2011
  * @license AOL license <http://aol.nexua.org>
  */
-@SuppressWarnings("static-access")
 public class iCo4 implements Method {
     private iConomy iConomy;
 
@@ -35,7 +34,7 @@ public class iCo4 implements Method {
     }
 
 	public String format(double amount) {
-        return this.iConomy.getBank().format(amount);
+        return com.nijiko.coelho.iConomy.iConomy.getBank().format(amount);
     }
 
     public boolean hasBanks() {
@@ -47,7 +46,7 @@ public class iCo4 implements Method {
     }
 
     public boolean hasAccount(String name) {
-        return this.iConomy.getBank().hasAccount(name);
+        return com.nijiko.coelho.iConomy.iConomy.getBank().hasAccount(name);
     }
 
     public boolean hasBankAccount(String bank, String name) {
@@ -55,7 +54,7 @@ public class iCo4 implements Method {
     }
 
     public MethodAccount getAccount(String name) {
-        return new iCoAccount(this.iConomy.getBank().getAccount(name));
+        return new iCoAccount(com.nijiko.coelho.iConomy.iConomy.getBank().getAccount(name));
     }
 
     public MethodBankAccount getBankAccount(String bank, String name) {
@@ -63,7 +62,9 @@ public class iCo4 implements Method {
     }
 	
     public boolean isCompatible(Plugin plugin) {
-        return plugin.getDescription().getName().equalsIgnoreCase("iconomy") && plugin.getClass().getName().equals("com.nijiko.coelho.iConomy.iConomy") && plugin instanceof iConomy;
+        return plugin.getDescription().getName().equalsIgnoreCase("iconomy") 
+        		&& plugin.getClass().getName().equals("com.nijiko.coelho.iConomy.iConomy") 
+        		&& plugin instanceof iConomy;
     }
 
     public void setPlugin(Plugin plugin) {

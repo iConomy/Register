@@ -16,7 +16,6 @@ import org.bukkit.plugin.Plugin;
  * @copyright (c) 2011
  * @license AOL license <http://aol.nexua.org>
  */
-@SuppressWarnings("static-access")
 public class iCo6 implements Method {
     private iConomy iConomy;
 
@@ -37,7 +36,7 @@ public class iCo6 implements Method {
     }
 
 	public String format(double amount) {
-        return this.iConomy.format(amount);
+        return com.iCo6.iConomy.format(amount);
     }
 
     public boolean hasBanks() {
