@@ -46,6 +46,7 @@ public class Methods {
 		addMethod("BOSEconomy", new com.nijikokun.register.payment.methods.BOSE7());
 		addMethod("Essentials", new com.nijikokun.register.payment.methods.EE17());
 		addMethod("Currency", new com.nijikokun.register.payment.methods.MCUR());
+		Dependencies.add("MultiCurrency");
 	}
 	
 	/**
