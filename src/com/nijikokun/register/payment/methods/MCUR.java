@@ -22,7 +22,7 @@ public class MCUR implements Method {
     }
 
     public String getName() {
-        return "Currency";
+        return "MultiCurrency";
     }
 
     public String getVersion() {
@@ -62,7 +62,9 @@ public class MCUR implements Method {
     }
 
     public boolean isCompatible(Plugin plugin) {
-        return plugin.getDescription().getName().equalsIgnoreCase(getName()) && plugin instanceof Currency;
+        return (plugin.getDescription().getName().equalsIgnoreCase("Currency")
+        		|| plugin.getDescription().getName().equalsIgnoreCase("MultiCurrency"))
+        		&& plugin instanceof Currency;
     }
 
     public void setPlugin(Plugin plugin) {
