@@ -1,11 +1,11 @@
-package com.nijikokun.register.payment.methods;
+package com.LRFLEW.register.payment.methods;
 
+import com.LRFLEW.register.payment.Method;
 import com.earth2me.essentials.Essentials;
 import com.earth2me.essentials.api.Economy;
 import com.earth2me.essentials.api.NoLoanPermittedException;
 import com.earth2me.essentials.api.UserDoesNotExistException;
 
-import com.nijikokun.register.payment.Method;
 
 import org.bukkit.plugin.Plugin;
 
@@ -32,6 +32,10 @@ public class EE17 implements Method {
 
     public String getVersion() {
         return "2.2";
+    }
+    
+    public int fractionalDigits() {
+    	return -1;
     }
 
     public String format(double amount) {
