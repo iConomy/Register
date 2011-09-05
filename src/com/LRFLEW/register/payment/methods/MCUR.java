@@ -1,6 +1,6 @@
-package com.nijikokun.register.payment.methods;
+package com.LRFLEW.register.payment.methods;
 
-import com.nijikokun.register.payment.Method;
+import com.LRFLEW.register.payment.Method;
 
 import me.ashtheking.currency.Currency;
 import me.ashtheking.currency.CurrencyList;
@@ -27,6 +27,10 @@ public class MCUR implements Method {
 
     public String getVersion() {
         return "0.09";
+    }
+    
+    public int fractionalDigits() {
+    	return -1;
     }
 
     public String format(double amount) {
@@ -58,7 +62,9 @@ public class MCUR implements Method {
     }
 
     public boolean isCompatible(Plugin plugin) {
-        return plugin.getDescription().getName().equalsIgnoreCase(getName()) && plugin instanceof Currency;
+        return (plugin.getDescription().getName().equalsIgnoreCase("Currency")
+        		|| plugin.getDescription().getName().equalsIgnoreCase("MultiCurrency"))
+        		&& plugin instanceof Currency;
     }
 
     public void setPlugin(Plugin plugin) {
