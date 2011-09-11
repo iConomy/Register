@@ -184,6 +184,20 @@ public class Methods {
 	}
 	
 	/**
+	 * Sets the preferred economy
+	 *
+	 * @return <code>boolean</code>
+	 */
+	public static boolean setPreferred(String check) {
+		if (getDependencies().contains(check)){
+			preferred = check;
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
 	 * Grab the existing and initialized (hopefully) Method Class.
 	 *
 	 * @return <code>Method</code> <em>or</em> <code>Null</code>
