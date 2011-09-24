@@ -1,0 +1,9 @@
+name: Register
+version: 1.3
+main: com.nijikokun.register.Register
+description: >
+             This is an implementation of Nijikokun's Register
+             designed for easy hooking by LRFLEW
+authors: [Nijikokun, LRFLEW, Acrobot, miho, Snowleo, KHobbits, Spice-King]
+website: http://forums.bukkit.org/threads/16849/
+softdepend: [iConomy, BOSEconomy, Currency, MultiCurrency]
