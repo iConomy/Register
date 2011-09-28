@@ -44,8 +44,6 @@ public class Register extends JavaPlugin {
     @Override
     public void onDisable() {
         Methods.reset();
-
-        System.out.println("[" + info.getName() + "] Payment method was disabled. No longer accepting payments.");
     }
 
     @Override
@@ -61,9 +59,7 @@ public class Register extends JavaPlugin {
             Methods.setMethod(this.getServer().getPluginManager());
         }
 
-        if (Methods.getMethod() == null)
-            System.out.println("[" + info.getName() + "] No payment method found, economy based plugins may not work.");
-        else
+        if (Methods.getMethod() != null)
             System.out.println("[" + info.getName() + "] Payment method found (" + Methods.getMethod().getName() + " version: " + Methods.getMethod().getVersion() + ")");
 
         System.out.print("[" + info.getName() + "] version " + info.getVersion()+ " is enabled.");
@@ -72,5 +68,6 @@ public class Register extends JavaPlugin {
     @Override
     public void onEnable() {
         this.getServer().getPluginManager().registerEvent(Type.PLUGIN_ENABLE, new server(this), Priority.Low, this);
+        this.getServer().getPluginManager().registerEvent(Type.PLUGIN_DISABLE, new server(this), Priority.Low, this);
     }
 }
