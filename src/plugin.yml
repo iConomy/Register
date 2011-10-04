@@ -1,0 +1,8 @@
+name: Register
+version: 1.5
+main: com.nijikokun.register.Register
+description: >
+             Register, an API built for economies.
+authors: [Nijikokun, LRFLEW, Acrobot, miho, Snowleo, KHobbits, Spice-King]
+website: http://dev.bukkit.org/server-mods/register
+softdepend: [iConomy, BOSEconomy, Currency, MultiCurrency]
