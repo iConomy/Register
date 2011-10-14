@@ -30,7 +30,7 @@ public class MCUR implements Method {
     }
     
     public int fractionalDigits() {
-    	return -1;
+       return -1;
     }
 
     public String format(double amount) {
@@ -38,11 +38,11 @@ public class MCUR implements Method {
     }
 
     public boolean hasBanks() {
-        return false;
+        return true;
     }
 
     public boolean hasBank(String bank) {
-        return false;
+        return CurrencyList.getAllCurrencys().contains(bank);
     }
 
     public boolean hasAccount(String name) {
@@ -50,7 +50,7 @@ public class MCUR implements Method {
     }
 
     public boolean hasBankAccount(String bank, String name) {
-        return false;
+        return CurrencyList.getAllCurrencys().contains(bank);
     }
 
     public boolean createAccount(String name) {
@@ -68,7 +68,7 @@ public class MCUR implements Method {
     }
 
     public MethodBankAccount getBankAccount(String bank, String name) {
-        return null;
+        return new MCurrencyAccount(name, bank);
     }
 
     public boolean isCompatible(Plugin plugin) {
@@ -81,56 +81,70 @@ public class MCUR implements Method {
         currencyList = (Currency) plugin;
     }
 
-    public class MCurrencyAccount implements MethodAccount{
+    public class MCurrencyAccount implements MethodAccount, MethodBankAccount{
         private String name;
+        private String currency;
 
         public MCurrencyAccount(String name) {
             this.name = name;
+            this.currency = (String) CurrencyList.maxCurrency(name)[0];
+        }
+        public MCurrencyAccount(String name, String currency) {
+            this.name = name;
+            this.currency = currency;
         }
 
         public double balance() {
-            return CurrencyList.getValue((String) CurrencyList.maxCurrency(name)[0], name);
+            return CurrencyList.getValue(currency, name);
+        }
+        
+        public String getBankName() {
+           return currency;
+        }
+        
+        public int getBankId() {
+           return -1;
         }
 
         public boolean set(double amount) {
-            CurrencyList.setValue((String) CurrencyList.maxCurrency(name)[0], name, amount);
+            CurrencyList.setValue(currency, name, amount);
             return true;
         }
 
         public boolean add(double amount) {
-            return CurrencyList.add(name, amount);
+            return CurrencyList.add(name, amount, currency);
         }
 
         public boolean subtract(double amount) {
-            return CurrencyList.subtract(name, amount);
+            return CurrencyList.subtract(name, amount, currency);
         }
 
         public boolean multiply(double amount) {
-            return CurrencyList.multiply(name, amount);
+            return CurrencyList.multiply(name, amount, currency);
         }
 
         public boolean divide(double amount) {
-            return CurrencyList.divide(name, amount);
+            return CurrencyList.divide(name, amount, currency);
         }
 
         public boolean hasEnough(double amount) {
-            return CurrencyList.hasEnough(name, amount);
+            return CurrencyList.hasEnough(name, amount, currency);
         }
 
         public boolean hasOver(double amount) {
-            return CurrencyList.hasOver(name, amount);
+            return CurrencyList.hasOver(name, amount, currency);
         }
 
         public boolean hasUnder(double amount) {
-            return CurrencyList.hasUnder(name, amount);
+            return CurrencyList.hasUnder(name, amount, currency);
         }
 
         public boolean isNegative() {
-            return CurrencyList.isNegative(name);
+            return CurrencyList.isNegative(name, currency);
         }
 
         public boolean remove() {
-            return CurrencyList.remove(name);
+            return CurrencyList.remove(name, currency);
         }
     }
 }
