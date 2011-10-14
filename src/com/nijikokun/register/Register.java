@@ -2,13 +2,13 @@ package com.nijikokun.register;
 
 import com.nijikokun.register.listeners.server;
 import com.nijikokun.register.payment.Methods;
+import org.bukkit.event.Event.Priority;
+import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.config.Configuration;
 
 import java.io.File;
-import org.bukkit.event.Event.Priority;
-import org.bukkit.event.Event.Type;
 
 /**
  * Register
@@ -41,7 +41,6 @@ public class Register extends JavaPlugin {
         return Methods.setPreferred(getPreferred());
     }
 
-    @Override
     public void onDisable() {
         Methods.reset();
     }
@@ -64,8 +63,7 @@ public class Register extends JavaPlugin {
 
         System.out.print("[" + info.getName() + "] version " + info.getVersion()+ " is enabled.");
     }
-
-    @Override
+    //No override, as we're using Java version 1.5
     public void onEnable() {
         this.getServer().getPluginManager().registerEvent(Type.PLUGIN_ENABLE, new server(this), Priority.Low, this);
         this.getServer().getPluginManager().registerEvent(Type.PLUGIN_DISABLE, new server(this), Priority.Low, this);

@@ -62,7 +62,7 @@ public class iCo6 implements Method {
         return (new Accounts()).create(name);
     }
 
-    public boolean createAccount(String name, Double balance) {
+    public boolean createAccount(String name, double balance) {
         if(hasAccount(name))
             return false;
         
