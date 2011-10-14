@@ -65,7 +65,7 @@ public class BOSE7 implements Method {
         return true;
     }
 
-    public boolean createAccount(String name, Double balance) {
+    public boolean createAccount(String name, double balance) {
         if(hasAccount(name))
             return false;
         

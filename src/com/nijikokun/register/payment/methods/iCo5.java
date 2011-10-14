@@ -63,7 +63,7 @@ public class iCo5 implements Method {
         return com.iConomy.iConomy.Accounts.create(name);
     }
 
-    public boolean createAccount(String name, Double balance) {
+    public boolean createAccount(String name, double balance) {
         if(hasAccount(name))
             return false;
         

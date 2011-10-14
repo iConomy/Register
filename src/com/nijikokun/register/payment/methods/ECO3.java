@@ -1,40 +1,36 @@
 package com.nijikokun.register.payment.methods;
 
 import com.nijikokun.register.payment.Method;
-
-import me.ashtheking.currency.Currency;
-import me.ashtheking.currency.CurrencyList;
-
+import me.ic3d.eco.ECO;
 import org.bukkit.plugin.Plugin;
 
 /**
- * MultiCurrency Method implementation.
+ * 3co implementation of Method.
  *
- * @author Acrobot
  * @copyright (c) 2011
  * @license AOL license <http://aol.nexua.org>
  */
-public class MCUR implements Method {
-    private Currency currencyList;
+public class ECO3 implements Method {
+    private ECO eco;
 
     public Object getPlugin() {
-        return this.currencyList;
+        return this.eco;
     }
 
     public String getName() {
-        return "MultiCurrency";
+        return "3co";
     }
 
     public String getVersion() {
-        return "0.09";
+        return "2.0";
     }
-    
+
     public int fractionalDigits() {
-    	return -1;
+        return 0;
     }
 
     public String format(double amount) {
-        return amount + " Currency";
+        return (int) Math.ceil(amount) + " " + (amount == 1 ? eco.singularCurrency : eco.pluralCurrency);
     }
 
     public boolean hasBanks() {
@@ -46,7 +42,7 @@ public class MCUR implements Method {
     }
 
     public boolean hasAccount(String name) {
-        return true;
+        return eco.hasAccount(name);
     }
 
     public boolean hasBankAccount(String bank, String name) {
@@ -54,17 +50,20 @@ public class MCUR implements Method {
     }
 
     public boolean createAccount(String name) {
-        CurrencyList.setValue((String) CurrencyList.maxCurrency(name)[0], name, 0);
+        if (hasAccount(name)) return false;
+        eco.createAccount(name, 0);
         return true;
     }
 
     public boolean createAccount(String name, double balance) {
-        CurrencyList.setValue((String) CurrencyList.maxCurrency(name)[0], name, balance);
+        if (hasAccount(name)) return false;
+        eco.createAccount(name, (int) balance);
         return true;
     }
 
     public MethodAccount getAccount(String name) {
-        return new MCurrencyAccount(name);
+        if (!hasAccount(name)) createAccount(name); //Still somehow fails - it's 3co's issue
+        return new ECO3Account(name);
     }
 
     public MethodBankAccount getBankAccount(String bank, String name) {
@@ -72,65 +71,67 @@ public class MCUR implements Method {
     }
 
     public boolean isCompatible(Plugin plugin) {
-        return (plugin.getDescription().getName().equalsIgnoreCase("Currency")
-             || plugin.getDescription().getName().equalsIgnoreCase("MultiCurrency"))
-             && plugin instanceof Currency;
+        return plugin.getDescription().getName().equals("3co") && plugin.getClass().getName().equals("me.ic3d.eco.ECO") && plugin instanceof ECO;
     }
 
     public void setPlugin(Plugin plugin) {
-        currencyList = (Currency) plugin;
+        this.eco = (ECO) plugin;
     }
 
-    public class MCurrencyAccount implements MethodAccount{
+    public class ECO3Account implements MethodAccount {
         private String name;
 
-        public MCurrencyAccount(String name) {
+        public ECO3Account(String name) {
             this.name = name;
         }
 
         public double balance() {
-            return CurrencyList.getValue((String) CurrencyList.maxCurrency(name)[0], name);
+            return eco.getMoney(name);
         }
 
         public boolean set(double amount) {
-            CurrencyList.setValue((String) CurrencyList.maxCurrency(name)[0], name, amount);
+            eco.setMoney(name, (int) Math.ceil(amount));
             return true;
         }
 
         public boolean add(double amount) {
-            return CurrencyList.add(name, amount);
+            set(balance() + amount);
+            return true;
         }
 
         public boolean subtract(double amount) {
-            return CurrencyList.subtract(name, amount);
+            set(balance() - amount);
+            return true;
         }
 
         public boolean multiply(double amount) {
-            return CurrencyList.multiply(name, amount);
+            set(balance() * amount);
+            return true;
         }
 
         public boolean divide(double amount) {
-            return CurrencyList.divide(name, amount);
+            set(balance() / amount);
+            return true;
         }
 
         public boolean hasEnough(double amount) {
-            return CurrencyList.hasEnough(name, amount);
+            return eco.hasEnough(name, (int) Math.ceil(amount));
         }
 
         public boolean hasOver(double amount) {
-            return CurrencyList.hasOver(name, amount);
+            return balance() > amount;
         }
 
         public boolean hasUnder(double amount) {
-            return CurrencyList.hasUnder(name, amount);
+            return balance() < amount;
         }
 
         public boolean isNegative() {
-            return CurrencyList.isNegative(name);
+            return balance() < 0;
         }
 
         public boolean remove() {
-            return CurrencyList.remove(name);
+            return false;
         }
     }
 }
