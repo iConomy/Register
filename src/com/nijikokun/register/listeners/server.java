@@ -5,18 +5,20 @@ import com.nijikokun.register.Register;
 import com.nijikokun.register.payment.Methods;
 
 // Bukkit Imports
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.event.server.PluginEnableEvent;
-import org.bukkit.event.server.ServerListener;
 
-public class server extends ServerListener {
+public class server implements Listener {
     private Register plugin;
 
     public server(Register plugin) {
         this.plugin = plugin;
     }
 
-    @Override
+    @EventHandler(priority = EventPriority.LOW)
     public void onPluginDisable(PluginDisableEvent event) {
         // Check to see if the plugin thats being disabled is the one we are using
         if (Methods.hasMethod()) {
@@ -27,7 +29,7 @@ public class server extends ServerListener {
         }
     }
 
-    @Override
+    @EventHandler(priority = EventPriority.LOW)
     public void onPluginEnable(PluginEnableEvent event) {
         // Check to see if we need a payment method
         if (!Methods.hasMethod() && Methods.setMethod(plugin.getServer().getPluginManager())) {
