@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="../lib/bukkit.jar"/>
+	<classpathentry kind="lib" path="../lib/craftbukkit.jar"/>
+    <classpathentry kind="lib" path="lib/3co.jar"/>
+    <classpathentry kind="lib" path="lib/BOSEconomy7.jar"/>
+    <classpathentry kind="lib" path="lib/Essentials.jar"/>
+    <classpathentry kind="lib" path="lib/iCo4.jar"/>
+    <classpathentry kind="lib" path="lib/iCo5.jar"/>
+    <classpathentry kind="lib" path="lib/iCo6.jar"/>
+    <classpathentry kind="lib" path="lib/MultiCurrency.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

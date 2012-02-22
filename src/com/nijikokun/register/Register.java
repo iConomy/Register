@@ -2,13 +2,15 @@ package com.nijikokun.register;
 
 import com.nijikokun.register.listeners.server;
 import com.nijikokun.register.payment.Methods;
-import org.bukkit.event.Event.Priority;
-import org.bukkit.event.Event.Type;
+
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.util.config.Configuration;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * Register
@@ -24,17 +26,23 @@ import java.io.File;
  */
 public class Register extends JavaPlugin {
 
-    public Configuration config;
+	private File configFile = new File("bukkit.yml");
+    public YamlConfiguration config = new YamlConfiguration();
     public String preferred;
     public PluginDescriptionFile info;
+    public server serverListener = new server(this);
 
     private String getPreferred() {
         return config.getString("economy.preferred");
     }
 
-    private void setPreferred(String preferences) {
-        config.setProperty("economy.preferred", preferences);
-        config.save();
+    @SuppressWarnings("unused")
+	private void setPreferred(String preferences) {
+        config.set("economy.preferred", preferences);
+        try {
+			config.save(configFile);
+		} catch (IOException e) {
+		}
     }
 
     private boolean hasPreferred() {
@@ -47,25 +55,29 @@ public class Register extends JavaPlugin {
 
     @Override
     public void onLoad() {
-        config = new Configuration(new File("bukkit.yml"));
-        info = this.getDescription();
-        config.load();
-
-        if (!hasPreferred()) {
-            System.out.println("[" + info.getName() + "] Preferred method [" + getPreferred() + "] not found, using first found.");
-
-            Methods.setVersion(info.getVersion());
-            Methods.setMethod(this.getServer().getPluginManager());
-        }
-
-        if (Methods.getMethod() != null)
-            System.out.println("[" + info.getName() + "] Payment method found (" + Methods.getMethod().getName() + " version: " + Methods.getMethod().getVersion() + ")");
-
-        System.out.print("[" + info.getName() + "] version " + info.getVersion()+ " is enabled.");
+        try {
+			config.load(configFile);
+		
+	        info = this.getDescription();
+	
+	        if (!hasPreferred()) {
+	            System.out.println("[" + info.getName() + "] Preferred method [" + getPreferred() + "] not found, using first found.");
+	
+	            Methods.setVersion(info.getVersion());
+	            Methods.setMethod(this.getServer().getPluginManager());
+	        }
+	
+	        if (Methods.getMethod() != null)
+	            System.out.println("[" + info.getName() + "] Payment method found (" + Methods.getMethod().getName() + " version: " + Methods.getMethod().getVersion() + ")");
+	
+	        System.out.print("[" + info.getName() + "] version " + info.getVersion()+ " is enabled.");
+        } catch (FileNotFoundException e) {
+		} catch (IOException e) {
+		} catch (InvalidConfigurationException e) {
+		}
     }
     //No override, as we're using Java version 1.5
     public void onEnable() {
-        this.getServer().getPluginManager().registerEvent(Type.PLUGIN_ENABLE, new server(this), Priority.Low, this);
-        this.getServer().getPluginManager().registerEvent(Type.PLUGIN_DISABLE, new server(this), Priority.Low, this);
+        this.getServer().getPluginManager().registerEvents(serverListener, this);
     }
 }
