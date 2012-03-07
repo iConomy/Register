@@ -5,6 +5,7 @@ import com.nijikokun.register.payment.Method;
 import me.ashtheking.currency.Currency;
 import me.ashtheking.currency.CurrencyList;
 
+import org.bukkit.World;
 import org.bukkit.plugin.Plugin;
 
 /**
@@ -146,5 +147,49 @@ public class MCUR implements Method {
         public boolean remove() {
             return CurrencyList.remove(name, currency);
         }
+        
+        /**
+         * Wrappers
+         */
+        
+		public double balance(World world) {
+			return balance();
+		}
+
+		public boolean set(double amount, World world) {
+			return set(amount);
+		}
+
+		public boolean add(double amount, World world) {
+			return add(amount);
+		}
+
+		public boolean subtract(double amount, World world) {
+			return subtract(amount);
+		}
+
+		public boolean multiply(double amount, World world) {
+			return multiply(amount);
+		}
+
+		public boolean divide(double amount, World world) {
+			return divide(amount);
+		}
+
+		public boolean hasEnough(double amount, World world) {
+			return hasEnough(amount);
+		}
+
+		public boolean hasOver(double amount, World world) {
+			return hasOver(amount);
+		}
+
+		public boolean hasUnder(double amount, World world) {
+			return hasUnder(amount);
+		}
+
+		public boolean isNegative(World world) {
+			return isNegative();
+		}
     }
 }
