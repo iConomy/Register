@@ -3,6 +3,8 @@ package com.nijikokun.register.payment.methods;
 import com.nijikokun.register.payment.Method;
 
 import cosine.boseconomy.BOSEconomy;
+
+import org.bukkit.World;
 import org.bukkit.plugin.Plugin;
 
 /**
@@ -109,7 +111,7 @@ public class BOSE6 implements Method {
         }
 
         public double balance() {
-            return (double) this.BOSEconomy.getPlayerMoney(this.name);
+            return this.BOSEconomy.getPlayerMoneyDouble(this.name);
         }
 
         public boolean set(double amount) {
@@ -135,9 +137,9 @@ public class BOSE6 implements Method {
         }
 
         public boolean divide(double amount) {
-            int IntAmount = (int)Math.ceil(amount);
-            int balance = (int)this.balance();
-            return this.BOSEconomy.setPlayerMoney(this.name, (balance / IntAmount), false);
+            //int IntAmount = (int)Math.ceil(amount);
+            //int balance = (int)this.balance();
+            return this.BOSEconomy.setPlayerMoney(this.name, (balance() / amount), false);
         }
 
         public boolean hasEnough(double amount) {
@@ -158,6 +160,50 @@ public class BOSE6 implements Method {
 
         public boolean remove() {
             return false;
+        }
+        
+        /**
+         * Wrappers
+         */
+        
+        public double balance(World world) {
+        	return balance();
+        }
+        
+        public boolean set(double amount, World world) {
+        	return set(amount);
+        }
+        
+        public boolean add(double amount, World world) {
+        	return add(amount);
+        }
+        
+        public boolean subtract(double amount, World world) {
+        	return subtract(amount);
+        }
+        
+        public boolean multiply(double amount, World world) {
+        	return multiply(amount);
+        }
+        
+        public boolean divide(double amount, World world) {
+        	return divide(amount);
+        }
+        
+        public boolean hasEnough(double amount, World world) {
+        	return hasEnough(amount);
+        }
+        
+        public boolean hasOver(double amount, World world) {
+        	return hasOver(amount);
+        }
+        
+        public boolean hasUnder(double amount, World world) {
+        	return hasUnder(amount);
+        }
+        
+        public boolean isNegative(World world) {
+        	return isNegative();
         }
     }
 
@@ -230,5 +276,49 @@ public class BOSE6 implements Method {
         public boolean remove() {
             return this.BOSEconomy.removeBank(bank);
         }
+        
+        /**
+         * Wrappers
+         */
+
+		public double balance(World world) {
+			return balance();
+		}
+
+		public boolean set(double amount, World world) {
+			return set(amount);
+		}
+
+		public boolean add(double amount, World world) {
+			return add(amount);
+		}
+
+		public boolean subtract(double amount, World world) {
+			return subtract(amount);
+		}
+
+		public boolean multiply(double amount, World world) {
+			return multiply(amount);
+		}
+
+		public boolean divide(double amount, World world) {
+			return divide(amount);
+		}
+
+		public boolean hasEnough(double amount, World world) {
+			return hasEnough(amount);
+		}
+
+		public boolean hasOver(double amount, World world) {
+			return hasOver(amount);
+		}
+
+		public boolean hasUnder(double amount, World world) {
+			return hasUnder(amount);
+		}
+
+		public boolean isNegative(World world) {
+			return isNegative();
+		}
     }
 }

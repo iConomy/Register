@@ -50,6 +50,7 @@ public class Methods {
         addMethod("Essentials", new com.nijikokun.register.payment.methods.EE17());
         addMethod("Currency", new com.nijikokun.register.payment.methods.MCUR());
         addMethod("3co", new com.nijikokun.register.payment.methods.ECO3());
+        addMethod("Craftconomy", new com.nijikokun.register.payment.methods.CraftEco());
         Dependencies.add("MultiCurrency");
     }
 
