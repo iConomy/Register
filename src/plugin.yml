@@ -5,4 +5,4 @@ description: >
              Register, an API built for economies.
 authors: [Nijikokun, LRFLEW, Acrobot, miho, Snowleo, KHobbits, Spice-King,ElgarL]
 website: https://github.com/ElgarL/Register
-softdepend: [iConomy, BOSEconomy, Currency, MultiCurrency]
+softdepend: [iConomy, BOSEconomy, Currency, MultiCurrency, Craftconomy]
