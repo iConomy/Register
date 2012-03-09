@@ -1,0 +1,5 @@
+1.6:
+	- Update to be compatible with Bukkit 1.1-R5.
+1.7:
+	- Add support for Craftconomy.
+	- Minor changes for event priority and Method test.
