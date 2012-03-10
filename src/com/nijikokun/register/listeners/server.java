@@ -18,7 +18,7 @@ public class server implements Listener {
         this.plugin = plugin;
     }
 
-    @EventHandler(priority = EventPriority.LOW)
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onPluginDisable(PluginDisableEvent event) {
         // Check to see if the plugin thats being disabled is the one we are using
         if (Methods.hasMethod()) {
@@ -29,7 +29,7 @@ public class server implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.LOW)
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onPluginEnable(PluginEnableEvent event) {
         // Check to see if we need a payment method
         if (!Methods.hasMethod() && Methods.setMethod(plugin.getServer().getPluginManager())) {

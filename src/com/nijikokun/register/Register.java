@@ -67,7 +67,7 @@ public class Register extends JavaPlugin {
 	            Methods.setMethod(this.getServer().getPluginManager());
 	        }
 	
-	        if (Methods.getMethod() != null)
+	        if (Methods.hasMethod())
 	            System.out.println("[" + info.getName() + "] Payment method found (" + Methods.getMethod().getName() + " version: " + Methods.getMethod().getVersion() + ")");
 	
 	        System.out.print("[" + info.getName() + "] version " + info.getVersion()+ " is enabled.");
