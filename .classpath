@@ -11,6 +11,6 @@
 	<classpathentry kind="lib" path="lib/iCo5.jar"/>
 	<classpathentry kind="lib" path="lib/iCo6.jar"/>
 	<classpathentry kind="lib" path="lib/MultiCurrency.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Steve/git/lib/Craftconomy-2.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/Craftconomy-2.3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
