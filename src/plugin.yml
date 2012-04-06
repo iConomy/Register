@@ -1,5 +1,5 @@
 name: Register
-version: 1.7
+version: 1.8
 main: com.nijikokun.register.Register
 description: >
              Register, an API built for economies.
