@@ -1,6 +1,5 @@
 package com.nijikokun.register.payment.methods;
 
-import java.util.Currency;
 
 import com.nijikokun.register.payment.Method;
 
@@ -9,16 +8,18 @@ import me.greatman.Craftconomy.AccountHandler;
 import me.greatman.Craftconomy.Bank;
 import me.greatman.Craftconomy.BankHandler;
 import me.greatman.Craftconomy.Craftconomy;
+import me.greatman.Craftconomy.CurrencyHandler;
+import me.greatman.Craftconomy.utils.Config;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.plugin.Plugin;
 
 /**
- * Craftconomy 2 Implementation of Method
+ * Craftconomy Implementation of Method
  *
- * @author Nijikokun <nijikokun@shortmail.com> (@nijikokun)
- * @copyright (c) 2011
+ * @author ElgarL
+ * @copyright (c) 2012
  * @license AOL license <http://aol.nexua.org>
  */
 public class CraftEco implements Method {
@@ -41,7 +42,7 @@ public class CraftEco implements Method {
     }
 
     public String format(double amount) {
-        return Craftconomy.format(amount, (me.greatman.Craftconomy.Currency) Currency.getAvailableCurrencies().toArray()[0]);
+    		return Craftconomy.format(amount, CurrencyHandler.getCurrency(Config.currencyDefault, true));
     }
 
     public boolean hasBanks() {
@@ -242,7 +243,7 @@ public class CraftEco implements Method {
 
         public boolean set(double amount, World world) {
             if(this.account == null) return false;
-            this.account.setBalance(amount, (me.greatman.Craftconomy.Currency) Currency.getAvailableCurrencies().toArray()[0], world);
+            this.account.setBalance(amount, CurrencyHandler.getCurrency(Config.currencyDefault, true), world);
             return true;
         }
 
@@ -252,7 +253,7 @@ public class CraftEco implements Method {
         
         public boolean add(double amount, World world) {
             if(this.account == null) return false;
-            this.account.addMoney(amount, (me.greatman.Craftconomy.Currency) Currency.getAvailableCurrencies().toArray()[0], world);
+            this.account.addMoney(amount, CurrencyHandler.getCurrency(Config.currencyDefault, true), world);
             return true;
         }
 
@@ -262,7 +263,7 @@ public class CraftEco implements Method {
         
         public boolean subtract(double amount, World world) {
             if(this.account == null) return false;
-            this.account.substractMoney(amount, (me.greatman.Craftconomy.Currency) Currency.getAvailableCurrencies().toArray()[0], world);
+            this.account.substractMoney(amount, CurrencyHandler.getCurrency(Config.currencyDefault, true), world);
             return true;
         }
         
@@ -272,7 +273,7 @@ public class CraftEco implements Method {
 
         public boolean multiply(double amount, World world) {
             if(this.account == null) return false;
-            this.account.multiplyMoney(amount, (me.greatman.Craftconomy.Currency) Currency.getAvailableCurrencies().toArray()[0], world);
+            this.account.multiplyMoney(amount, CurrencyHandler.getCurrency(Config.currencyDefault, true), world);
             return true;
         }
 
@@ -282,7 +283,7 @@ public class CraftEco implements Method {
         
         public boolean divide(double amount, World world) {
             if(this.account == null) return false;
-            this.account.divideMoney(amount, (me.greatman.Craftconomy.Currency) Currency.getAvailableCurrencies().toArray()[0], world);
+            this.account.divideMoney(amount, CurrencyHandler.getCurrency(Config.currencyDefault, true), world);
             return true;
         }
 
@@ -291,7 +292,7 @@ public class CraftEco implements Method {
         }
         
         public boolean hasEnough(double amount, World world) {
-            return this.account.hasEnough(amount, (me.greatman.Craftconomy.Currency) Currency.getAvailableCurrencies().toArray()[0], world);
+            return this.account.hasEnough(amount, CurrencyHandler.getCurrency(Config.currencyDefault, true), world);
         }
 
         public boolean hasOver(double amount) {

@@ -3,3 +3,5 @@
 1.7:
 	- Add support for Craftconomy.
 	- Minor changes for event priority and Method test.
+1.8:
+	- Fix Craftconomy currency handling.
